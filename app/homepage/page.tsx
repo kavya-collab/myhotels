@@ -1,13 +1,13 @@
-import ListingList from "@/components/ListingList"
-import { listings } from "@/data/listings"
-import { ListingType } from "@/components/ListingCard"
-import React from "react"
+import ListingListFilters from "@/components/ListingListFilters";
 
 
-const HomePage : React.FC = () => {
+const HomePage: React.FC = () => {
+
+
+
     return (
-        <div> 
-            <ListingList listings={listings}/>
+        <div>
+            <ListingListFilters />
         </div>
     )
 }
