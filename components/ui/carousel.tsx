@@ -175,21 +175,30 @@ CarouselContent.displayName = "CarouselContent"
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+>(({ children, className,  ...props }, ref) => {
   const { orientation } = useCarousel()
 
   return (
     <div
-      ref={ref}
-      role="group"
-      aria-roledescription="slide"
+    ref={ref}
+    role='group'
+    aria-roledescription='slide'
+    className={cn(
+      'min-w-0 shrink-0 grow-0 basis-full',
+      orientation === 'horizontal' ? 'pl-4' : 'pt-4',
+      className,
+    )}
+    {...props}
+  >
+    <div
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
-        className
+        'overflow-hidden rounded-md border-2 border-transparent',
+        true && 'border-primary',
       )}
-      {...props}
-    />
+    >
+      {children}
+    </div>
+  </div>
   )
 })
 CarouselItem.displayName = "CarouselItem"

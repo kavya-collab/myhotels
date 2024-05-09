@@ -1,0 +1,44 @@
+import { Card } from "./ui/card"
+import { DollarSign, Pin, Users } from 'lucide-react';
+import { Separator } from "./ui/separator";
+import React from "react"
+import { ListingCardProps } from "./ListingCard";
+import ListingDetailsCardImages from "./ListingDetailsCardImages";
+import Link from "next/link";
+
+
+
+const ListingDetailsCard: React.FC<ListingCardProps> = ({ listing }) => {
+    return (
+        
+        <Card>
+            <ListingDetailsCardImages listing={listing} />
+            <Separator className='mb-4' />
+            <div className='flex flex-col gap-2'>
+                <h1 className='mb-2 text-2xl font-bold'>{listing.name}</h1>
+                <div className='flex items-center gap-2'>
+                    <DollarSign className='h-4 w-4 text-primary' />
+                    <span className='text-muted-foreground'>
+                        <span className='font-bold text-foreground'>{listing.price}</span> /
+                        night
+                    </span>
+                </div>
+                <div className='flex items-center gap-2'>
+                    <Pin className='h-4 w-4 text-primary' />
+                    <span className='text-muted-foreground'>{listing.location.name}</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                    <Users className='h-4 w-4 text-primary' />
+                    <span className='text-muted-foreground'>
+                        {listing.maxGuests} Guests
+                    </span>
+                </div>
+            </div>
+            <Separator className='my-4' />
+            <div className='whitespace-pre-line'>{listing.description}</div>
+        </Card>
+        
+    )
+}
+
+export default ListingDetailsCard

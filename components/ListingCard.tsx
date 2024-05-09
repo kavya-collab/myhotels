@@ -1,9 +1,13 @@
 import { Card, CardContent } from "./ui/card"
 import Image from "next/image"
-import { listings } from '@/data/listings'
+import Page from "@/app/listings/[slug]/page";
 import React from "react"
 import { DollarSign, Pin, Users } from 'lucide-react';
 import ListingCardImages from "./ListingCardImages";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { listings } from "@/data/listings";
+
 
 
 export type ListingType = {
@@ -32,13 +36,17 @@ export type ListingType = {
 }
 
 
-interface ListingCardProps {
+export type ListingCardProps = {
     key: number;
     listing: ListingType;
 
 }
+
 const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
+
+    const slug = useParams()
     return (
+        <Link href={`/listings/${listing.id}`}  >
         <Card className="w-[320px]">
             <ListingCardImages listing={listing} />
             <CardContent className="p-4" >
@@ -62,6 +70,7 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
                 </div>
             </CardContent>
         </Card>
+        </Link>
     )
 }
 

@@ -1,7 +1,7 @@
 import ListingCard, { ListingType } from "./ListingCard"
 
 
- interface ListingListType {
+ export type ListingListType  = {
     listings: ListingType[];
  }
 const ListingList:React.FC<ListingListType> = ({listings}) => {
