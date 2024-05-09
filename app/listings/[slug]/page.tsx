@@ -5,6 +5,11 @@ import React, { useRef, useState, useEffect } from "react"
 // import { ListingType } from "@/components/ListingCard"
 import { listings as staticListings } from "@/data/listings"
 import { ListingType } from "@/components/ListingCard"
+import { notFound } from 'next/navigation'
+
+
+export const dynamicParams = false
+
 
 
 export default function Page({ params }: { params: { slug: string } })  {
@@ -30,6 +35,7 @@ export default function Page({ params }: { params: { slug: string } })  {
                 const data = await response.json()
                 console.log(data)
                 setListing( data);
+                
             }
             catch {
                 setError('Something went wrong. Please try again later.');
@@ -56,6 +62,9 @@ export default function Page({ params }: { params: { slug: string } })  {
       return <div className='text-center'>{error}</div>;
     }
 
+    if(listing.id == undefined){
+      return notFound();
+    }
     return <ListingDetailsCard listing={listing} key={0} />;
   };
 
