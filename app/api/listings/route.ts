@@ -7,18 +7,19 @@ import { isListingAvailable } from "@/data/listings";
 export async function POST(request : Request ){
 
 
-
     // For any POST request method, implement first two steps (mandatory)
     // 1. Since, this api is a POST request, accept the payoad with below code
-    const {filters} =  await request.json();
+    const filters =  await request.json();
 
-    // 2. to check what is in the payload
-    console.log(filters)
+
+
+    // // 2. to check what is in the payload
+    console.log(filters, "from api route")
 
     
-    // Your custom logic for the api starts here
+    // // Your custom logic for the api starts here
 
-    // unpacking filters 
+    // // unpacking filters 
     const {dates, guests, search} = filters
     
    

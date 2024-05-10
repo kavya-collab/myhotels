@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "./ui/card"
 import Image from "next/image"
 import Page from "@/app/listings/[slug]/page";
@@ -5,7 +6,7 @@ import React from "react"
 import { DollarSign, Pin, Users } from 'lucide-react';
 import ListingCardImages from "./ListingCardImages";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import ListingFavoriteButton from './ListingFavoriteButton';
 import { listings } from "@/data/listings";
 
 
@@ -44,11 +45,18 @@ export type ListingCardProps = {
 
 const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
 
-    const slug = useParams()
+   
     return (
         <Link href={`/listings/${listing.id}`}  >
         <Card className="w-[320px]">
-            <ListingCardImages listing={listing} />
+        <div className='relative'>
+          <ListingCardImages listing={listing} />
+          <ListingFavoriteButton
+            listing={listing}
+            className='absolute right-4 top-4'
+          />
+        </div>
+            {/* <ListingCardImages listing={listing} /> */}
             <CardContent className="p-4" >
                 <h2 className=" mb-0 font-semibold text-xl ">{listing.name}</h2>
                 <div className='flex items-center gap-2'>

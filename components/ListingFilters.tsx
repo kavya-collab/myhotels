@@ -22,7 +22,7 @@ const ListingFilters: React.FC<ListingFiltersProps> = ({ onChange }) => {
   };
 
   return (
-    <div className='flex flex-row items-center justify-center gap-6 mb-6'>
+    <div className='flex flex-col  sm:flex-row   items-start sm:items-center justify-start sm:justify-center gap-6 mb-6'>
       <Input className='w-[370px]' placeholder='Search destinations' value={search}
         onChange={(e) => setSearch(e.target.value)} />
       <DatePickerWithRange  value={dates}

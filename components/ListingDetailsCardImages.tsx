@@ -9,6 +9,7 @@ import Image from 'next/image';
 import type { ListingType } from "./ListingCard";
 import { useState } from 'react';
 
+
 const ListingDetailsCardImages = ({ listing }: { listing: ListingType }) => {
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -24,7 +25,7 @@ const ListingDetailsCardImages = ({ listing }: { listing: ListingType }) => {
                             key={image}
                             className='basis-1/3 cursor-pointer'
                             onClick={() => setCurrentImageIndex(index)}
-                            // isSelected={index === currentImageIndex}
+                        // isSelected={index === currentImageIndex}
                         >
                             <Image width={100} height={52}
                                 className='h-52 w-full object-cover shadow-sm'
