@@ -11,6 +11,11 @@ interface ListingsState {
 interface AddFavoriteListingPayload {
     listingId : number
 }
+interface Filters {
+    dates?: any;
+    guests: number;
+    search: string;
+  }
 
 // Define the initial state
 const initialState: ListingsState = {
@@ -23,7 +28,7 @@ const initialState: ListingsState = {
 // Define an async thunk for fetching data
 export const fetchListings = createAsyncThunk(
   'listings/fetchListings',
-  async ( filters) => {
+  async ( filters : Filters) => {
     // Fetch data from API
     console.log(filters, "from slice")
     const response = await fetch('http://localhost:3000/api/listings/' , {method : "post",body : JSON.stringify(filters)});
