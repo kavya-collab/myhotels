@@ -25,7 +25,7 @@ export async function POST(request : Request ){
    
 
     // mimicking a server delay with promise , to be commented in production
-   await new Promise((resolve) => setTimeout(resolve, 1000));
+//    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     
     // listings should come the raw database
