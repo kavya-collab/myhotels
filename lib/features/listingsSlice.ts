@@ -44,7 +44,7 @@ export const fetchListings = createAsyncThunk(
   async ( filters : Filters) => {
     // Fetch data from API
     console.log(filters, "from slice")
-    const response = await fetch('http://localhost:3000/api/listings/' , {method : "post",body : JSON.stringify(filters)});
+    const response = await fetch('/api/listings/' , {method : "post",body : JSON.stringify(filters)});
     const data = await response.json();
    
     // const data = listings;

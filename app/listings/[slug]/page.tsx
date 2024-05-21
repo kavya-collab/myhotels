@@ -35,7 +35,7 @@ export default function Page({ params }: { params: { slug: string } })  {
             setError(null)
             try {
 
-                const response = await fetch(`http://localhost:3000/api/listings/${params.slug}`, options)
+                const response = await fetch(`/api/listings/${params.slug}`, options)
                 const data = await response.json()
                 console.log(data)
                 setListing( data);
