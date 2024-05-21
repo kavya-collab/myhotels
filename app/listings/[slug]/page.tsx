@@ -17,6 +17,10 @@ export default function Page({ params }: { params: { slug: string } })  {
     const [listing, setListing] = useState<any>()
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [error, setError] = useState<string| null>(null)
+
+    
+    // this is slug , easch listng 
+    // you are in wrong file
     
     
     

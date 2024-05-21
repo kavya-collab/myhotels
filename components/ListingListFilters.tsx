@@ -19,24 +19,24 @@ import {ThunkDispatch} from "@reduxjs/toolkit";
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {fetchListings} from "@/lib/features/listingsSlice";
+import {fetchListings, changeSearch} from "@/lib/features/listingsSlice";
 import { RootState } from "@/lib/store";
 
 const ListingListFilters: React.FC = () => {
 
 
-    const { listings, error, status } = useSelector((state :  RootState ) => state.listings);
+    const { listings, error, status , filters} = useSelector((state :  RootState ) => state.listings);
     const dispatch  = useDispatch<ThunkDispatch<any, any, any>>();;
     let filteredListings = staticListings
 
     // const [listings, setListings] = useState<ListingType[]>(filteredListings)
     const [isPending, setIsPending] = useState<boolean>(false)
 
-    const [filters, setFilters] = useState<Filters>({
-        dates: null,
-        guests: 0,
-        search: '',
-    });
+    // const [filters, setFilters] = useState<Filters>({
+    //     dates: null,
+    //     guests: 0,
+    //     search: '',
+    // });
 
 
     useEffect(() => {
@@ -62,22 +62,14 @@ const ListingListFilters: React.FC = () => {
     }, [filters])
 
     const handleFilters = (filters: Filters) => {
-
         console.log("setting filters")
-        setFilters(filters)
+        // setFilters(filters)
+        dispatch(changeSearch(filters))
         console.log(filters)
     }
 
-
-
     return (
-        <div>
-            <div>
-                <ListingFilters onChange={handleFilters} />
-                <Separator className='my-4' />
-                {isPending ? <Spinner/> :  <ListingList listings={listings} />}
-            </div>
-        </div>
+             <ListingFilters onChange={handleFilters} />
     )
 }
 

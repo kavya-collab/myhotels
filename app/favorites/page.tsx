@@ -15,7 +15,7 @@ const ListingFavoritesPage: React.FC = () => {
     [listings, favoriteListingIds],
   );
   
-
+console.log(favoriteListingIds)
   return (
     <div className='container py-4'>
       <ListingList listings={favoriteListings} />

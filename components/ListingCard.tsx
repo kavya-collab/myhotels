@@ -47,7 +47,7 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
 
    
     return (
-        <Link href={`/listings/${listing.id}`}  >
+        
         <Card className="w-[320px]">
         <div className='relative'>
           <ListingCardImages listing={listing} />
@@ -57,6 +57,7 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
           />
         </div>
             {/* <ListingCardImages listing={listing} /> */}
+            <Link href={`/listings/${listing.id}`}  >
             <CardContent className="p-4" >
                 <h2 className=" mb-0 font-semibold text-xl ">{listing.name}</h2>
                 <div className='flex items-center gap-2'>
@@ -77,8 +78,9 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
                     </span>
                 </div>
             </CardContent>
+            </Link>
         </Card>
-        </Link>
+        
     )
 }
 

@@ -1,11 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 // import listings from "@/data/listings"
 // Define the type for your state
+
+
 interface ListingsState {
   listings: any[]; // Assuming listings is an array of any type
   error: string | null;
   favoriteListingIds: number[];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  status:   'loading' | 'succeeded' | 'failed';
+  filters : {
+    guests : number,
+    search : string,
+    dates ?: any,
+  }
 }
 
 interface AddFavoriteListingPayload {
@@ -15,14 +22,20 @@ interface Filters {
     dates?: any;
     guests: number;
     search: string;
-  }
+}
 
 // Define the initial state
 const initialState: ListingsState = {
   listings: [],
   error: null,
   favoriteListingIds: [],
-  status: 'idle',
+  status: 'loading',
+  filters : {
+    guests : 0,
+    search : "",
+    dates:  null
+  }
+
 };
 
 // Define an async thunk for fetching data
@@ -33,7 +46,7 @@ export const fetchListings = createAsyncThunk(
     console.log(filters, "from slice")
     const response = await fetch('http://localhost:3000/api/listings/' , {method : "post",body : JSON.stringify(filters)});
     const data = await response.json();
-    console.log(data)
+   
     // const data = listings;
     return data;
   }
@@ -46,14 +59,21 @@ const listingsSlice = createSlice({
     addFavoriteListing: (state, action: PayloadAction<AddFavoriteListingPayload>) => {
       const { listingId } = action.payload;
       state.favoriteListingIds.push(listingId);
+      console.log(state.favoriteListingIds)
     },
     removeFavoriteListing: (state, action: PayloadAction<AddFavoriteListingPayload>  ) => {
         const { listingId } = action.payload;    
         state.favoriteListingIds = state.favoriteListingIds.filter(
         (id) => id !== listingId
       );
-
     },
+    changeSearch : (state, action :  PayloadAction<Filters>  ) => {
+      const {guests, dates, search} = action.payload;
+      state.filters.guests = guests
+      state.filters.search = search
+      state.filters.dates = dates
+    }
+
   },
   extraReducers: (builder) => {
     builder
@@ -73,6 +93,6 @@ const listingsSlice = createSlice({
   },
 });
 
-export const { addFavoriteListing, removeFavoriteListing,  } = listingsSlice.actions;
+export const { addFavoriteListing, removeFavoriteListing,changeSearch  } = listingsSlice.actions;
 
 export default listingsSlice.reducer;

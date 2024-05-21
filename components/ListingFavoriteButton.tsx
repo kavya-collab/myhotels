@@ -28,7 +28,7 @@ interface ListingFavoriteButtonProps {
     () => favoriteListingIds.includes(listing.id),
     [listing, favoriteListingIds],
   );
-
+  console.log(favoriteListingIds)
 
   const toggleFav = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
