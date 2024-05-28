@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import StoreProvider from "./StoreProvider";
+import { useDispatch } from "react-redux";
+import { toggleIsLoggedIn } from "@/lib/features/listingsSlice";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +18,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+ 
   return (
     <html lang="en">
       <body className={inter.className}>

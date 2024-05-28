@@ -13,6 +13,7 @@ interface ListingsState {
     search : string,
     dates ?: any,
   }
+  isLoggedIn: boolean;
 }
 
 interface AddFavoriteListingPayload {
@@ -34,7 +35,8 @@ const initialState: ListingsState = {
     guests : 0,
     search : "",
     dates:  null
-  }
+  },
+  isLoggedIn: false 
 
 };
 
@@ -72,6 +74,10 @@ const listingsSlice = createSlice({
       state.filters.guests = guests
       state.filters.search = search
       state.filters.dates = dates
+    },
+    toggleIsLoggedIn: (state ,action :PayloadAction<boolean>) => {
+      console.log(action.payload, "here in slice login state")
+      state.isLoggedIn =  action.payload;
     }
 
   },
@@ -93,6 +99,6 @@ const listingsSlice = createSlice({
   },
 });
 
-export const { addFavoriteListing, removeFavoriteListing,changeSearch  } = listingsSlice.actions;
+export const { addFavoriteListing, removeFavoriteListing,changeSearch,toggleIsLoggedIn  } = listingsSlice.actions;
 
 export default listingsSlice.reducer;
