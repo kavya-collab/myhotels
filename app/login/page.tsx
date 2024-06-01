@@ -35,28 +35,7 @@ export default function Login({
     return router.push("/listings");
   };
 
-  // const signUp = async (formData: FormData) => {
-
-
-  //   const origin = headers().get("origin");
-  //   const email = formData.get("email") as string;
-  //   const password = formData.get("password") as string;
-  //   const supabase = createClient();
-
-  //   const { error } = await supabase.auth.signUp({
-  //     email,
-  //     password,
-  //     options: {
-  //       emailRedirectTo: `${origin}/auth/callback`,
-  //     },
-  //   })
-
-  //   if (error) {
-  //     return router.push("/login?message=Could not authenticate user");
-  //   }
-
-  //   return router.push("/login?message=Check email to continue sign in process");
-  // };
+  
 
   return (
 
@@ -142,7 +121,13 @@ export default function Login({
                 {searchParams.message}
               </p>
             )}
-             <Link href="/signup" className="p-2 text-center">If Not registered, Please<span> Signup</span></Link> 
+              
+             <p className="mt-10 text-center text-sm text-gray-500">
+            Not a member?{' '}
+            <Link href="/siignup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              Signup
+            </Link>
+          </p>
           </form>
          
 

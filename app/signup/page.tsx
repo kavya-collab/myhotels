@@ -16,24 +16,7 @@ export default function Login({
 }) {
   const dispatch = useDispatch();
   const router = useRouter()
-  // const signIn = async (formData: FormData) => {
 
-
-  //   const email = formData.get("email") as string;
-  //   const password = formData.get("password") as string;
-  //   const supabase = createClient();
-
-  //   const { error } = await supabase.auth.signInWithPassword({
-  //     email,
-  //     password,
-  //   });
-
-  //   if (error) {
-  //     return router.push("/login?message=Could not authenticate user");
-  //   }
-  //   dispatch(toggleIsLoggedIn(true));
-  //   return router.push("/listings");
-  // };
 
   const signUp = async (formData: FormData) => {
 
